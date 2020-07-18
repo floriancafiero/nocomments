@@ -13,4 +13,7 @@ Allows to isolate the comment section.
 Allows to isolate each comment in the comment section.
 
 ## Link extraction
+
+Allows to extract all the hyperlinks pointing to another website in the comment section.
+
 ## Internal link extraction
