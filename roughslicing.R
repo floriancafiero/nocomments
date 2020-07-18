@@ -65,30 +65,6 @@ write.csv(erreurs,file="Erreurs_tri_comments.csv")
 write.csv(comments,file="comments.csv")
 write.csv(htmls_clean,file="Nocomment.csv”)
 
-#Fonctions d’extraction des liens
-#Nécessite library : stringr
-#Nécessite fichiers : data.frame htmls (id_site, label_site, id_url, url, html)
-#Produits : data.frame htmls_edges (source, target, id)
-
-extract_edges <- function(htmls)
-{
-sites <- unique(htmls$id_site)
-htmls_edges <- data.frame(source = character(0), target = character(0), type = character(0), id = integer(0))
-Id = 1 ; l = integer(0)
-for (x in 1:length(sites))
-{
-pages_site <- which(htmls$id_site == sites[x])
-edges <- unlist(str_match_all(htmls$html[pages_site], "<a[^>]*href\\s*=\\s*(\"[^\">]+[\">]|\'[^\'>]+[\'>]|[^\\s>]+[\\s>])"))
-l=length(edges)
-if (l != 0)
-{
-Id = Id + l
-htmls_edges <- rbind(htmls_edges, data.frame(source=rep(sites[x],l), target=edges, id=seq(Id-l,Id-1)))
-}
-}
-return(htmls_edges)
-}
-
 #Fonctions d’identification des liens “internes”
 # Remarque : l’utilisation des préfixes = liées à hyphe mais adaptable à d’autres corpus.
 
