@@ -12,7 +12,7 @@ for (x in 1:length(sites))
 {
 prefixe <- prefixes[which(prefixes$id_site == sites[x]),]
 INx <- c()
-for (y in 5:(4+prefixe$n_prefixes)) # passage par les indices de colonnes en raison de la structure du fichier
+for (y in 5:(4+prefixe$n_prefixes)) 
 {
 a <- grep(tolower(prefixe[y]),tolower(htmls_edges$target))
 INx <- c(INx,a)
