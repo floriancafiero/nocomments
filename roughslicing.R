@@ -65,35 +65,6 @@ write.csv(erreurs,file="Erreurs_tri_comments.csv")
 write.csv(comments,file="comments.csv")
 write.csv(htmls_clean,file="Nocomment.csv”)
 
-#Fonctions d’identification des liens “internes”
-# Remarque : l’utilisation des préfixes = liées à hyphe mais adaptable à d’autres corpus.
-
-#Nécessite library : stringr
-#Nécessite fichiers : data.frame htmls_edges (source, target, id) - data.frame prefixes (id_site, multi_prefixes, n_prefixes, name, prefixe 1… prefixe Nmax)
-#Produits : data.frame htmls_edges_IN (source, target, weight)
-
-sort_edges <- function(htmls_edges, prefixes)
-{
-htmls_edges_IN <- htmls_edges
-sites = prefixes$id_site
-for (x in 1:length(sites))
-{
-prefixe <- prefixes[which(prefixes$id_site == sites[x]),]
-INx <- c()
-for (y in 5:(4+prefixe$n_prefixes)) # passage par les indices de colonnes en raison de la structure du fichier
-{
-a <- grep(tolower(prefixe[y]),tolower(htmls_edges$target))
-INx <- c(INx,a)
-htmls_edges_IN[a,2] <- sites[x]
-}
-IN=c(IN,unique(INx))
-}
-htmls_edges_IN <- htmls_edges_IN[IN,]
-htmls_edges_IN <- htmls_edges_IN[which(htmls_edges_IN$source != htmls_edges_IN$target),]
-htmls_edges_IN <- as.data.frame(table(htmls_edges_IN[,1],htmls_edges_IN[,2]))
-names(htmls_edges_IN) <- c(“source”, “target”, “weight”)
-return(htmls_edges_IN)
-}
 
 #Fonctions d’individualisation des commentaires (precise slicing)
 #Remarque : les balises regex sont mal stockées en fichier excel.
