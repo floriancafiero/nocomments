@@ -64,10 +64,11 @@ return(htmls_clean)
 write.csv(erreurs,file="Erreurs_tri_comments.csv")
 write.csv(comments,file="comments.csv")
 write.csv(htmls_clean,file="Nocomment.csv”)
-Fonctions d’extraction des liens
-Nécessite library : stringr
-Nécessite fichiers : data.frame htmls (id_site, label_site, id_url, url, html)
-Produits : data.frame htmls_edges (source, target, id)
+
+#Fonctions d’extraction des liens
+#Nécessite library : stringr
+#Nécessite fichiers : data.frame htmls (id_site, label_site, id_url, url, html)
+#Produits : data.frame htmls_edges (source, target, id)
 
 extract_edges <- function(htmls)
 {
