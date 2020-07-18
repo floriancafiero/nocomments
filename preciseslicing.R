@@ -1,5 +1,4 @@
 #Fonctions d’individualisation des commentaires (precise slicing)
-#Remarque : les balises regex sont mal stockées en fichier excel.
 #Requires library : stringr
 #Requires files : data.frame comments (id_site, label_site, id_url, url, html) - data.frame balises (id_site, label_site, empty_size, reg_general, reg_time, reg_name, reg_depth, reg_site, reg_text)
 #Products : data.frame isolated_comments (id_site, label_site, id_url, url, Ncom, time_com, name_com, site_com, depth_com, text_com)
