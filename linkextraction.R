@@ -1,4 +1,4 @@
-#Links extraction
+#Link extraction
 #Requires library : stringr
 #Requires files : data.frame htmls (id_site, label_site, id_url, url, html)
 #Products : data.frame htmls_edges (source, target, id)
