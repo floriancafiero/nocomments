@@ -1,5 +1,5 @@
 # nocomments
-Removal or extraction of a website's commentary section.
+Removal or extraction of a website's commentary section, depending on its code.
 
 Four functions are provided:
 
